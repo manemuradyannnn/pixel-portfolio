@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Github, Linkedin, Mail, ExternalLink, Heart } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 
 import avatar from "./avatar.png";
 import hobbyGuitar from "./hobby-guitar.png";
@@ -24,11 +24,8 @@ import edit9 from "./edit9.mp4";
 import edit10 from "./edit10.mp4";
 import edit11 from "./edit11.mp4";
 
-// If you later want a separate TikTok PFP image, import it and replace tiktokPfp below
-// import tiktokPfp from "./tiktokPfp.png";
-
 const TIKTOK_URL = "https://www.tiktok.com/@atsushibrainrot";
-const tiktokPfp = tiktokPfpImg; // swap to your own tiktokPfp import if you add one
+const tiktokPfp = tiktokPfpImg;
 
 // ---------- DATA ----------
 const hobbies = [
@@ -98,7 +95,6 @@ export default function PixelPortfolio() {
   const [openFactId, setOpenFactId] = useState(null);
   const [soundOn, setSoundOn] = useState(false);
 
-  // IMPORTANT: store username without @, because JSX adds it
   const [tiktokStats] = useState({
     username: "atsushibrainrot",
     followers: 1727,
@@ -143,19 +139,16 @@ export default function PixelPortfolio() {
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
-          .creativeGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
-  gap: 28px;
-  align-items: start;
-}
 
-@media (max-width: 900px) {
-  .creativeGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
+        .creativeGrid {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 420px;
+          gap: 28px;
+          align-items: start;
+        }
+        @media (max-width: 900px) {
+          .creativeGrid { grid-template-columns: 1fr; }
+        }
 
         .section-divider {
           height: 4px;
@@ -250,32 +243,6 @@ export default function PixelPortfolio() {
           letter-spacing: 0.04em;
           max-width: 360px;
         }
-        .pixelBubble::before {
-          content: "";
-          position: absolute;
-          left: 26px;
-          top: -12px;
-          width: 18px;
-          height: 18px;
-          background: #ffffff;
-          border-left: 4px solid #000;
-          border-top: 4px solid #000;
-          transform: rotate(45deg);
-        }
-        .bubbleTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .bubbleTitle { font-size: 10px; color: #014c86; }
-        .bubbleClose {
-          width: 22px;
-          height: 22px;
-          border: 3px solid #000;
-          background: #edac8f;
-          cursor: pointer;
-          font-family: 'Press Start 2P', monospace;
-          font-size: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
 
         .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
         @media (max-width: 980px) { .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -304,7 +271,15 @@ export default function PixelPortfolio() {
         .winBtns { display: flex; gap: 8px; }
         .winBtn { width: 14px; height: 14px; border: 2px solid #000; background: #f5ebe0; }
         .winBtnClose { background: #edac8f; }
-        .winBody { background: #fff; padding: 16px; border: 4px solid #000; }
+
+        /* IMPORTANT FIX: stop gradient-text rules from making other text invisible */
+        .winBody {
+          background: #fff;
+          padding: 16px;
+          border: 4px solid #000;
+          color: #111;
+          -webkit-text-fill-color: #111;
+        }
 
         .projImg {
           width: 100%;
@@ -342,56 +317,6 @@ export default function PixelPortfolio() {
           box-shadow: 3px 3px 0 #000;
         }
       `}</style>
-
-      {/* Floating Decorative Elements */}
-      {/* Floating Decorative Elements */}
-      <div style={{ position: "fixed", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
-        <div className="float" style={{ position: "absolute", top: 30, left: 40, fontSize: 64, opacity: 0.2, animationDelay: "0s" }}>. ₊ ⊹ . ₊˖ . ₊</div>
-        <div className="float" style={{ position: "absolute", top: 160, right: 80, fontSize: 56, opacity: 0.2, animationDelay: "1s" }}> ₊ ⊹</div>
-        <div className="float" style={{ position: "absolute", bottom: 160, left: "25%", fontSize: 72, opacity: 0.2, animationDelay: "2s" }}>. ݁˖ . ݁</div>
-        <div className="float" style={{ position: "absolute", bottom: 80, right: "50%", fontSize: 64, opacity: 0.2, animationDelay: "3s" }}>⊹ . ݁˖ </div>
-      </div>
-      <div
-  className="float pixel-star"
-  style={{ position: "absolute", top: 120, left: 500, fontSize: 64 }}
->
-  ₊ ⊹
-</div>
-
-
-<div
-  className="float pixel-star"
-  style={{ position: "absolute", top: 160, right: 80, fontSize: 56 }}
->
-  . ݁₊ ⊹ . ݁˖ . ݁
-</div>
-
-
-<div
-  className="float pixel-star"
-  style={{ position: "absolute", bottom: 160, left: "25%", fontSize: 72 }}
->
-  . ݁˖ . ݁
-</div>
-
-
-<div
-  className="float pixel-star"
-  style={{ position: "absolute", bottom: 80, right: "33%", fontSize: 64 }}
->
-  . ₊˖ .
-</div>
-
-
-<div
-  className="float pixel-star"
-  style={{ position: "absolute", bottom: 300, right: "85%", fontSize: 64 }}
->
-  ₊ ⊹₊
-</div>
-
-
-
 
       {/* HERO */}
       <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px" }}>
@@ -453,6 +378,53 @@ export default function PixelPortfolio() {
           </div>
         </div>
       </section>
+{/* Floating Decorative Elements */}
+      <div style={{ position: "fixed", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
+        <div className="float" style={{ position: "absolute", top: 30, left: 40, fontSize: 64, opacity: 0.2, animationDelay: "0s" }}>. ₊ ⊹ . ₊˖ . ₊</div>
+        <div className="float" style={{ position: "absolute", top: 160, right: 80, fontSize: 56, opacity: 0.2, animationDelay: "1s" }}> ₊ ⊹</div>
+        <div className="float" style={{ position: "absolute", bottom: 160, left: "25%", fontSize: 72, opacity: 0.2, animationDelay: "2s" }}>. ݁˖ . ݁</div>
+        <div className="float" style={{ position: "absolute", bottom: 80, right: "50%", fontSize: 64, opacity: 0.2, animationDelay: "3s" }}>⊹ . ݁˖ </div>
+      </div>
+      <div
+  className="float pixel-star"
+  style={{ position: "absolute", top: 120, left: 500, fontSize: 64 }}
+>
+  ₊ ⊹
+</div>
+
+
+<div
+  className="float pixel-star"
+  style={{ position: "absolute", top: 160, right: 80, fontSize: 56 }}
+>
+  . ݁₊ ⊹ . ݁˖ . ݁
+</div>
+
+
+<div
+  className="float pixel-star"
+  style={{ position: "absolute", bottom: 160, left: "25%", fontSize: 72 }}
+>
+  . ݁˖ . ݁
+</div>
+
+
+<div
+  className="float pixel-star"
+  style={{ position: "absolute", bottom: 80, right: "33%", fontSize: 64 }}
+>
+  . ₊˖ .
+</div>
+
+
+<div
+  className="float pixel-star"
+  style={{ position: "absolute", bottom: 300, right: "85%", fontSize: 64 }}
+>
+  ₊ ⊹₊
+</div>
+
+
 
       {/* MAIN */}
       <div className="container" style={{ paddingBottom: 80 }}>
@@ -501,9 +473,24 @@ export default function PixelPortfolio() {
 
               {openFactId && (
                 <div className="pixelBubble">
-                  <div className="bubbleTop">
-                    <div className="bubbleTitle">{hobbies.find((h) => h.id === openFactId)?.title}</div>
-                    <button className="bubbleClose" onClick={() => setOpenFactId(null)} aria-label="Close">
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+                    <div style={{ fontSize: 10, color: "#014c86" }}>{hobbies.find((h) => h.id === openFactId)?.title}</div>
+                    <button
+                      style={{
+                        width: 22,
+                        height: 22,
+                        border: "3px solid #000",
+                        background: "#edac8f",
+                        cursor: "pointer",
+                        fontFamily: "'Press Start 2P', monospace",
+                        fontSize: 10,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                      onClick={() => setOpenFactId(null)}
+                      aria-label="Close"
+                    >
                       X
                     </button>
                   </div>
@@ -518,17 +505,7 @@ export default function PixelPortfolio() {
 
         {/* PROJECTS */}
         <section className="slide-in" style={{ marginBottom: 80 }}>
-          <h2
-            className="h2 gradient-text"
-            style={{
-              fontFamily: "'Press Start 2P', monospace",
-              fontSize: "22px",
-              lineHeight: "1.6",
-              letterSpacing: "0.08em",
-              textShadow: "2px 2px 0 rgba(0,0,0,0.35)",
-              marginBottom: 10,
-            }}
-          >
+          <h2 className="h2 gradient-text" style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "22px", lineHeight: "1.6", letterSpacing: "0.08em", textShadow: "2px 2px 0 rgba(0,0,0,0.35)", marginBottom: 10 }}>
             Projects
           </h2>
           <p style={{ margin: "0 0 18px 0", fontFamily: "'Press Start 2P', monospace", fontSize: "10px", color: "#b7c9c4", letterSpacing: "0.06em", textShadow: "2px 2px 0 rgba(0,0,0,0.35)", lineHeight: "1.8" }}>
@@ -572,50 +549,6 @@ export default function PixelPortfolio() {
 
         <div className="section-divider" />
 
-        {/* EXPERIENCE */}
-        <section className="slide-in" style={{ marginBottom: 80 }}>
-          <h2 className="h2 gradient-text" style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "22px", lineHeight: "1.6", letterSpacing: "0.08em", textShadow: "2px 2px 0 rgba(0,0,0,0.35)", marginBottom: 18 }}>
-            Experience
-          </h2>
-
-          <div
-            style={{
-              background: "#000",
-              border: "4px solid #025798ff",
-              boxShadow: "6px 6px 0 #000",
-              padding: 18,
-              fontFamily: "'Press Start 2P', monospace",
-              fontSize: 11,
-              color: "#025798ff",
-              lineHeight: "1.8",
-              letterSpacing: "0.08em",
-            }}
-          >
-            <div>{`> LOAD EXPERIENCE.LOG`}</div>
-            <br />
-
-            <div>{`[YOUNG FEMALE SCIENTISTS]`}</div>
-            <div>Founder — July 2023</div>
-            <div>Led a 7-member international journalism team publishing weekly articles on the opioid crisis and gender inequality in STEM, reaching 5,000+ monthly readers.</div>
-
-            <br />
-
-            <div>{`[YALE UNIVERSITY]`}</div>
-            <div>Research Student — July 2023</div>
-            <div>Delivered a technical & financial presentation to 100+ graduate and high school students, earning recognition for biomedical innovation.</div>
-
-            <br />
-
-            <div>{`[VAUGHAN PUBLIC LIBRARIES]`}</div>
-            <div>Coding Tutor — January 2025</div>
-            <div>Tutored students in coding fundamentals and problem-solving through hands-on projects.</div>
-
-            <br />
-
-            <div>{`> END EXPERIENCE.LOG`}</div>
-          </div>
-        </section>
-
         {/* CREATIVE */}
         <section className="slide-in" style={{ marginBottom: 80 }}>
           <h2 className="h2 gradient-text" style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "22px", lineHeight: "1.6", letterSpacing: "0.08em", textShadow: "2px 2px 0 rgba(0,0,0,0.35)", marginBottom: 18 }}>
@@ -626,7 +559,6 @@ export default function PixelPortfolio() {
             all visual edits made with Adobe After Effects
           </p>
 
-          {/* Tabs bar */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 12, alignItems: "center" }}>
             {edits.map((e) => {
               const active = e.id === activeEditId;
@@ -670,9 +602,8 @@ export default function PixelPortfolio() {
             </button>
           </div>
 
-          {/* Two windows row */}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 420px", gap: 28, alignItems: "start" }}>
-            {/* LEFT: Video window */}
+          <div className="creativeGrid">
+            {/* LEFT */}
             <div className="win" style={{ maxWidth: 680 }}>
               <div className="winHeader">
                 <span>{(activeEdit?.title || "Edit")}.mp4 — Player</span>
@@ -708,7 +639,7 @@ export default function PixelPortfolio() {
               </div>
             </div>
 
-            {/* RIGHT: TikTok stats window */}
+            {/* RIGHT */}
             <div className="win">
               <div className="winHeader">
                 <span>Current_Stats.exe</span>
@@ -719,7 +650,7 @@ export default function PixelPortfolio() {
                 </div>
               </div>
 
-              <div className="winBody" style={{ fontFamily: "'Press Start 2P', monospace" }}>
+              <div className="winBody" style={{ fontFamily: "'Press Start 2P', monospace", color: "#111", WebkitTextFillColor: "#111" }}>
                 <a
                   href={TIKTOK_URL}
                   target="_blank"
@@ -731,6 +662,7 @@ export default function PixelPortfolio() {
                     textDecoration: "none",
                     color: "#111",
                     marginBottom: 10,
+                    WebkitTextFillColor: "#111",
                   }}
                 >
                   <img
@@ -748,35 +680,34 @@ export default function PixelPortfolio() {
                   />
 
                   <div style={{ lineHeight: 1.6 }}>
-                    <div style={{ fontSize: 10, color: "#6b7c7a" }}>TikTok</div>
-                    <div style={{ fontSize: 12, fontWeight: 900 }}>@{tiktokStats.username}</div>
-                    <div style={{ fontSize: 9, color: "#014c86" }}>(click to open)</div>
+                    <div style={{ fontSize: 10, color: "#6b7c7a", WebkitTextFillColor: "#6b7c7a" }}>TikTok</div>
+                    <div style={{ fontSize: 12, fontWeight: 900, color: "#111", WebkitTextFillColor: "#111" }}>
+                      @{tiktokStats.username}
+                    </div>
+                    <div style={{ fontSize: 9, color: "#014c86", WebkitTextFillColor: "#014c86" }}>(click to open)</div>
                   </div>
                 </a>
 
                 <div style={{ display: "grid", gap: 10 }}>
-                  <div style={{ border: "3px solid #000", padding: 10, boxShadow: "3px 3px 0 #000" }}>
-                    <div style={{ fontSize: 9, color: "#6b7c7a" }}>Followers</div>
-                    <div style={{ fontSize: 14, fontWeight: 900 }}>{Number(tiktokStats.followers || 0).toLocaleString()}</div>
-                  </div>
-
-                  <div style={{ border: "3px solid #000", padding: 10, boxShadow: "3px 3px 0 #000" }}>
-                    <div style={{ fontSize: 9, color: "#6b7c7a" }}>Likes</div>
-                    <div style={{ fontSize: 14, fontWeight: 900 }}>{Number(tiktokStats.likes || 0).toLocaleString()}</div>
-                  </div>
-
-                  <div style={{ border: "3px solid #000", padding: 10, boxShadow: "3px 3px 0 #000" }}>
-                    <div style={{ fontSize: 9, color: "#6b7c7a" }}>Total Views</div>
-                    <div style={{ fontSize: 14, fontWeight: 900 }}>{Number(tiktokStats.views || 0).toLocaleString()}</div>
-                  </div>
+                  {[
+                    ["Followers", tiktokStats.followers],
+                    ["Likes", tiktokStats.likes],
+                    ["Total Views", tiktokStats.views],
+                  ].map(([label, value]) => (
+                    <div key={label} style={{ border: "3px solid #000", padding: 10, boxShadow: "3px 3px 0 #000" }}>
+                      <div style={{ fontSize: 9, color: "#6b7c7a", WebkitTextFillColor: "#6b7c7a" }}>{label}</div>
+                      <div style={{ fontSize: 14, fontWeight: 900, color: "#111", WebkitTextFillColor: "#111" }}>
+                        {Number(value ?? 0).toLocaleString()}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <footer style={{ textAlign: "center", padding: "30px 0 60px 0" }}>
-        </footer>
+        <footer style={{ textAlign: "center", padding: "30px 0 60px 0" }} />
       </div>
     </div>
   );
